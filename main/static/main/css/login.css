@@ -1,0 +1,188 @@
+:root {
+    --bg-color: #f8fafc;
+    --glass-bg: rgba(255, 255, 255, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.9);
+    --glass-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
+    --text-primary: #0f172a;
+    --text-secondary: #64748b;
+    --accent-grad: linear-gradient(135deg, #EC4899, #3B82F6);
+    --error-color: #ef4444;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+
+body {
+    background-color: var(--bg-color);
+    height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    /* Soft Mesh Gradient Background */
+    background: 
+        radial-gradient(circle at 10% 10%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 90% 90%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, #ffffff 0%, #f1f5f9 100%);
+}
+
+/* --- Floating Background Orbs --- */
+.orb {
+    position: absolute; border-radius: 50%;
+    filter: blur(40px); z-index: -1;
+    animation: floatOrb 10s infinite ease-in-out;
+}
+.orb-1 { width: 300px; height: 300px; background: rgba(236, 72, 153, 0.15); top: -50px; left: -50px; animation-delay: 0s; }
+.orb-2 { width: 400px; height: 400px; background: rgba(59, 130, 246, 0.15); bottom: -100px; right: -100px; animation-delay: 2s; }
+.orb-3 { width: 150px; height: 150px; background: rgba(168, 85, 247, 0.15); top: 40%; left: 80%; animation-delay: 4s; }
+
+@keyframes floatOrb {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-30px) scale(1.1); }
+}
+
+/* --- Main Glass Container --- */
+.glass-container {
+    width: 100%; max-width: 480px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    border-radius: 32px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Antigravity Float for the Card */
+.antigravity-card { animation: floatCard 6s ease-in-out infinite; }
+@keyframes floatCard { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+/* Header */
+.brand-header { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 30px; }
+.sparkle-box {
+    width: 36px; height: 36px; background: #000; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; color: white;
+}
+.brand-text {
+    font-family: 'Outfit', sans-serif; font-size: 1.6rem; font-weight: 800;
+    letter-spacing: -0.5px;
+    background: var(--accent-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+/* Toggle Switch */
+.toggle-container {
+    background: rgba(0,0,0,0.03); border-radius: 16px; padding: 4px;
+    display: flex; margin-bottom: 30px;
+}
+.toggle-btn {
+    flex: 1; padding: 10px; border: none; background: transparent;
+    border-radius: 12px; font-weight: 600; color: var(--text-secondary);
+    cursor: pointer; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.toggle-btn.active { background: #fff; color: #000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+
+/* Form Transition */
+.auth-form { display: none; animation: fadeIn 0.4s ease forwards; }
+.auth-form.active-form { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.form-title { font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; text-align: center; }
+.form-subtitle { text-align: center; color: var(--text-secondary); margin-bottom: 30px; font-size: 0.95rem; }
+
+/* --- Input Fields (FIXED FOR OVERLAP) --- */
+.input-group { position: relative; margin-bottom: 24px; }
+
+.glass-input {
+    width: 100%; 
+    padding: 16px 16px 16px 20px;
+    border: 1px solid rgba(0,0,0,0.1); 
+    border-radius: 16px;
+    background: rgba(255,255,255,0.8); /* Slightly more opaque to hide background lines */
+    font-size: 1rem; 
+    color: var(--text-primary);
+    transition: all 0.2s; 
+    outline: none;
+    height: 56px; /* Enforce height */
+}
+
+.glass-input:focus {
+    border-color: #3B82F6; background: #fff;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+.floating-label {
+    position: absolute; 
+    left: 20px; 
+    top: 50%; 
+    transform: translateY(-50%);
+    color: var(--text-secondary); 
+    font-size: 0.95rem; 
+    font-weight: 500;
+    pointer-events: none; 
+    transition: all 0.2s ease;
+    padding: 0 4px; /* Space for the background to cover line */
+}
+
+/* FIX: This selector list now includes :-webkit-autofill.
+   It forces the label to move up if the browser autofills the password/email.
+   It also sets a white background to the label so it doesn't look messy over the border.
+*/
+.glass-input:focus ~ .floating-label,
+.glass-input:not(:placeholder-shown) ~ .floating-label,
+.glass-input:-webkit-autofill ~ .floating-label {
+    top: 0px; 
+    transform: translateY(-50%) scale(0.85); 
+    left: 16px;
+    color: #3B82F6; 
+    background: #fff; /* Key Fix: Covers the border line */
+    border-radius: 4px;
+    z-index: 10;
+}
+
+/* Chrome/Edge Autofill Background Fix */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    -webkit-text-fill-color: #000 !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.error-msg { color: var(--error-color); font-size: 0.75rem; margin-top: 4px; display: block; height: 14px; font-weight: 500; }
+.input-group.error .glass-input { border-color: var(--error-color); }
+.input-group.error .floating-label { color: var(--error-color); }
+
+/* --- Actions & Buttons --- */
+.form-actions { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; font-size: 0.85rem; }
+.forgot-link { text-decoration: none; color: #3B82F6; font-weight: 600; }
+
+.submit-btn {
+    width: 100%; padding: 16px; border-radius: 16px; border: none;
+    background: #000; color: #fff; font-size: 1rem; font-weight: 600;
+    cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px;
+    transition: all 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+.submit-btn:hover { transform: translateY(-2px); box-shadow: 0 15px 30px rgba(0,0,0,0.2); }
+
+/* Divider & Social */
+.divider { display: flex; align-items: center; margin: 24px 0; color: var(--text-secondary); font-size: 0.8rem; }
+.divider::before, .divider::after { content: ""; flex: 1; height: 1px; background: rgba(0,0,0,0.1); }
+.divider span { padding: 0 10px; }
+
+.social-login { display: flex; gap: 16px; }
+.social-btn {
+    flex: 1; padding: 12px; border: 1px solid rgba(0,0,0,0.1); border-radius: 12px;
+    background: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+    font-weight: 600; color: var(--text-primary); transition: 0.2s;
+}
+.social-btn img { width: 20px; height: 20px; }
+.social-btn:hover { background: #f8fafc; border-color: #ccc; }
+
+/* Custom Checkbox */
+.checkbox-container { display: flex; align-items: center; gap: 8px; cursor: pointer; color: var(--text-secondary); }
+.checkbox-container input { display: none; }
+.checkmark { width: 18px; height: 18px; border: 2px solid #ccc; border-radius: 4px; display: inline-block; position: relative; }
+.checkbox-container input:checked ~ .checkmark { background: #000; border-color: #000; }
+.checkbox-container input:checked ~ .checkmark::after {
+    content: ''; position: absolute; left: 5px; top: 1px; width: 4px; height: 9px;
+    border: solid white; border-width: 0 2px 2px 0; transform: rotate(45deg);
+}

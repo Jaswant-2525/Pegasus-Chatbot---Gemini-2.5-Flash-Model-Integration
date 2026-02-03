@@ -1,0 +1,217 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaswant Raj GV - AI Architect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'main/css/about.css' %}">
+</head>
+<body>
+
+    <div class="background-mesh"></div>
+
+    <nav class="glass-nav">
+        <div class="brand">
+            <div class="logo-mark">JR</div>
+            <span class="brand-name">Jaswant Raj GV</span>
+        </div>
+        <div class="nav-links">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="#work">Work</a>
+            <a href="#arsenal">Arsenal</a>
+            <a href="#awards">Awards</a>
+        </div>
+        <a href="{% static 'main/Resume.pdf' %}" class="btn-glow" download>
+            <span>Resume</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </a>
+    </nav>
+
+    <header class="portfolio-hero">
+        <div class="hero-content antigravity-slow">
+            <div class="status-pill">
+                <span class="status-dot"></span> Available for Hires
+            </div>
+            <h1>
+                Architecting <br>
+                <span class="gradient-text">Intelligence.</span>
+            </h1>
+            <p class="bio">
+                I am <strong>Jaswant Raj GV</strong>, an AI & Data Analytics specialist with a <strong>9.65 CGPA</strong>
+                I don't just write code; I build adaptive systems that learn, reason, and evolves.
+            </p>
+            
+            <div class="hero-stats">
+                <div class="stat-box">
+                    <h3>3+</h3>
+                    <p>Core Projects</p>
+                </div>
+                <div class="stat-box">
+                    <h3>2027</h3>
+                    <p>Graduation</p>
+                </div>
+                <div class="stat-box">
+                    <h3>1st</h3>
+                    <p>Research Prize</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="glass-cube float-delay-1">
+                <div class="face front">NLP</div>
+                <div class="face back">ML</div>
+                <div class="face right">AI</div>
+                <div class="face left">Data</div>
+                <div class="face top"></div>
+                <div class="face bottom"></div>
+            </div>
+        </div>
+    </header>
+
+    <section id="work" class="section-container">
+        <div class="section-header">
+            <h2>The Masterpiece</h2>
+            <p>My latest contribution to the future of EdTech.</p>
+        </div>
+
+        <div class="featured-card">
+            <div class="featured-content">
+                <div class="card-label">Flagship Project</div>
+                <h3>Personalised Learning Platform</h3>
+                <p>
+                    An adaptive AI ecosystem that evolves with the student. It uses <strong>Reinforcement Learning</strong> to adjust quiz difficulty in real-time and <strong>Generative AI</strong> to create custom study videos on the fly.
+                </p>
+                <div class="tag-row">
+                    <span class="tech-tag">GenAI</span>
+                    <span class="tech-tag">Reinforcement Learning</span>
+                    <span class="tech-tag">Cosine Similarity</span>
+                </div>
+            </div>
+            <div class="featured-visual">
+                <div class="ui-mockup antigravity-hover">
+                    <div class="ui-header">
+                        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                    </div>
+                    <div class="ui-body">
+                        <div class="skeleton-line w-70"></div>
+                        <div class="skeleton-line w-50"></div>
+                        <div class="skeleton-box"></div>
+                        <div class="floating-badge">Adaptive Difficulty: Hard</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-container">
+        <div class="section-header">
+            <h2>Selected Works</h2>
+        </div>
+        
+        <div class="bento-grid">
+            <div class="bento-card glass-hover">
+                <div class="card-icon">📄</div>
+                <div class="card-info">
+                    <h4>Info Retrieval System</h4>
+                    <p>Automated research paper analysis using <strong>Tesseract OCR</strong> and <strong>Hugging Face LLMs</strong>. Extracts entities (NER) and summarizes complex academic text.</p>
+                </div>
+                <a href="#" class="arrow-link">→</a>
+            </div>
+
+            <div class="bento-card glass-hover">
+                <div class="card-icon">📊</div>
+                <div class="card-info">
+                    <h4>RecSys Research</h4>
+                    <p>A comparative study on <strong>PCA</strong> (Principal Component Analysis) to solve data sparsity in Recommender Systems. Proven efficiency on large-scale datasets.</p>
+                </div>
+                <a href="#" class="arrow-link">→</a>
+            </div>
+
+            <div class="bento-card glass-hover">
+                <div class="card-icon">⚛️</div>
+                <div class="card-info">
+                    <h4>Newton's Cradle Sim</h4>
+                    <p>A physics-accurate web simulation. Built with <strong>JavaScript</strong> to calculate momentum and energy conservation frame-by-frame.</p>
+                </div>
+                <a href="#" class="arrow-link">→</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="arsenal" class="split-section">
+        
+        <div class="split-col">
+            <h2 class="col-title">My Arsenal</h2>
+            <div class="skills-wrapper">
+                <div class="skill-category">
+                    <span>Languages</span>
+                    <div class="skill-tags">
+                        <span class="skill highlight">Python</span>
+                        <span class="skill">Java</span>
+                        <span class="skill">JavaScript</span>
+                        <span class="skill">SQL</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <span>Intelligence</span>
+                    <div class="skill-tags">
+                        <span class="skill highlight">TensorFlow</span>
+                        <span class="skill highlight">PyTorch</span>
+                        <span class="skill highlight">NLP</span>
+                        <span class="skill">Pandas</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <span>Web & Tools</span>
+                    <div class="skill-tags">
+                        <span class="skill highlight">Django</span>
+                        <span class="skill highlight">Flask</span>
+                        <span class="skill">Node.js</span>
+                        <span class="skill highlight">Version Control</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="split-col" id="awards">
+            <h2 class="col-title">Recognition</h2>
+            <div class="awards-stack">
+                <div class="award-card glass-hover">
+                    <div class="award-icon gold">🏆</div>
+                    <div class="award-text">
+                        <h4>1st Prize, Research Day 2025</h4>
+                        <p>Awarded for paper on "Enhancing Recommender System Performance with PCA".</p>
+                    </div>
+                </div>
+                <div class="award-card glass-hover">
+                    <div class="award-icon silver">🎖️</div>
+                    <div class="award-text">
+                        <h4>Special Mention, TechExpo 2025</h4>
+                        <p>Recognized for critical thinking in Technical Debate competition.</p>
+                    </div>
+                </div>
+                <div class="award-card glass-hover">
+                    <div class="award-icon bronze">🎓</div>
+                    <div class="award-text">
+                        <h4>Chancellor's Cash Prize (2023)</h4>
+                        <p>University topper for the academic year 2023.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <footer class="portfolio-footer">
+        <p>Designing the future, one algorithm at a time.</p>
+        <div class="footer-links">
+            <a href="mailto:jaswantraj150@gmail.com">jaswantraj150@gmail.com</a>
+            <a href="https://linkedin.com/in/jaswantrajgv">LinkedIn</a>
+        </div>
+    </footer>
+
+</body>
+</html>
