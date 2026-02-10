@@ -1,5 +1,6 @@
+import os
 import json
-from google import genai # <--- NEW LIBRARY
+from google import genai
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
 from django.contrib.auth.models import User
@@ -9,8 +10,8 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 from .models import ChatSession, Message
 
 # --- CONFIGURATION ---
-# ⚠️ PASTE YOUR NEW API KEY HERE
-GENAI_API_KEY = "YOUR_API_KEY_HERE"
+# Get API key from environment variable or use placeholder for development
+GENAI_API_KEY = os.environ.get("GEMINI_API_KEY", "YOUR_API_KEY_HERE")
 
 # Initialize the NEW Client
 client = genai.Client(api_key=GENAI_API_KEY)
